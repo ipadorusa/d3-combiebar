@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>npm-package</title>
+    <link rel="stylesheet" type="text/css" href="https://www.saramin.co.kr/sri_css/company/pattern.css">
+    <style>
+        .label_group .labels {font-size:14px}
+        .group.max .field1 {fill:#2365f2;font-weight:bold}
+        .bar.field1 {fill:#00d5ab}
+        .bar.field2 {fill:#ebeff4;stroke:#aaafb7;stroke-dasharray:5,5;}
+        .group .label.field1 {font-size:13px}
+        .group .label.field2 {font-size:13px}
+        .xAxis .tick line {display:none}
+        .xAxis .tick text {font-size:14px;color:#666}
+        .xAxis .tick.max text {font-weight:bold;color:#222}
+        .xAxis .domain {stroke:#666}
+        .yAxis line {stroke:#ddd}
+        .yAxis text {font-size:13px;color:#888}
+        .yAxis .domain {display:none}
+
+        .wrap_chart.chart08 {width:620px}
+        .wrap_chart.chart08 svg {width:100%}
+        @media all and (max-width:1260px) {
+            .wrap_chart.chart08 {width:549px}
+            }
+        .columns {display:flex;flex-direction:row;flex-wrap:nowrap;justify-content:space-around}
+        .columns .column {margin-top:20px}
+    </style>
+</head>
+<body>
+<div id="wrap" class="wrap">
+    <div class="box">
+        <h1>CombieChart</h1>
+        <div class="tblType">
+            <table>
+                <colgroup>
+                    <col style="width:15%">
+                    <col style="width:13%">
+                    <col style="width:12%">
+                    <col style="width:30%">
+                    <col style="width:30%">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th scope="col">Parameter</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Default</th>
+                    <th scope="col">설명</th>
+                    <th scope="col">비고</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>w</td>
+                    <td>number</td>
+                    <td>450</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>h</td>
+                    <td>number</td>
+                    <td>240</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>mTop</td>
+                    <td>number</td>
+                    <td>40</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>mRight</td>
+                    <td>number</td>
+                    <td>20</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>mBottom</td>
+                    <td>number</td>
+                    <td>50</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>mLeft</td>
+                    <td>number</td>
+                    <td>50</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>barPadding</td>
+                    <td>number</td>
+                    <td>0.55</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>qty</td>
+                    <td>number</td>
+                    <td>6</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>dx1</td>
+                    <td>string</td>
+                    <td>"0.7em"</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>dx2</td>
+                    <td>string</td>
+                    <td>"0.7em"</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>barSpacing</td>
+                    <td>number</td>
+                    <td>3</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>grouped</td>
+                    <td>null</td>
+                    <td>null</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>limitValue</td>
+                    <td>null</td>
+                    <td>null</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>limitGapValue</td>
+                    <td>number</td>
+                    <td>50</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>maxShow</td>
+                    <td>boolean</td>
+                    <td>true</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="columns">
+            <div class="column">
+                <div class="wrap_chart chart08"></div>
+            </div>
+            <div class="column">
+                <div class="wrap_chart chart11"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="test/build.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const dataAiScoreDistribution = [
+            {model_name: "30 이하", field1: 0},
+            {model_name: "31~40", field1: 0},
+            {model_name: "41~50", field1: 0},
+            {model_name: "51~60", field1: 6},
+            {model_name: "61~70", field1: 12},
+            {model_name: "71~80", field1: 4},
+            {model_name: "81~90", field1: 0},
+            {model_name: "91~100", field1: 0}
+        ];
+
+
+
+        new UI.CombieBarChart(".chart08", {
+            w: 450,
+            h: 200,
+            mTop: 40,
+            mRight: 20,
+            mBottom: 50,
+            mLeft: 50,
+            limitValue: 100,
+            limitGapValue: 0,
+            barPadding: 0.7
+        }, [
+            {
+                "model_name":"현실형",
+                "field1": 4,
+                "top": "",
+            },
+            {
+                "model_name":"탐구형",
+                "field1": 1,
+                "top": "",
+            },
+            {
+                "model_name":"예술형",
+                "field1": 3,
+                "top": ""
+            },
+            {
+                "model_name":"사회형",
+                "field1": 0,
+                "top": "y"
+            },
+            {
+                "model_name":"진취형",
+                "field1": 0,
+                "top": ""
+            },
+            {
+                "model_name":"관습형",
+                "field1": 0,
+                "top": ""
+            }
+        ]);
+
+        new UI.CombieBarChart(".chart11", {
+            w: 440,
+            h: 225,
+            mTop: 20,
+            mRight: 10,
+            mBottom: 30,
+            mLeft: 30,
+            grouped: 'group',
+            limitValue: 100
+        }, [
+            {
+                "model_name":"언어",
+                "field1":45,
+                "field2":20,
+                "top": "",
+            },
+            {
+                "model_name":"수리",
+                "field1":49,
+                "field2":22,
+                "top": "",
+            },
+            {
+                "model_name":"공간",
+                "field1":43,
+                "field2":19,
+                "top": ""
+            },
+            {
+                "model_name":"추리",
+                "field1":34,
+                "field2":15,
+                "top": ""
+            }
+        ]);
+
+    });
+</script>
+</body>
+</html>
